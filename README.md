@@ -1,4 +1,4 @@
-# PulmoSense: 
+# PulmoSense
 
 **Edge-Optimised Deep Learning for Real-Time Acoustic Respiratory Disease Screening**
 
