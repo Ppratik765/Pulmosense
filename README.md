@@ -76,7 +76,7 @@ These augmentations effectively tripled the dataset to over 10,000 highly distin
 ### 5.4 MobileNetV3 Transfer Learning
 To satisfy the draconian memory and computational constraints of edge deployment, `MobileNetV3Large` was selected as the foundational topology. The architecture leverages depthwise separable convolutions, Inverted Residual Blocks, and Squeeze-and-Excite (SE) attention mechanisms.
 
-* **Frozen Base:** The model was initialised with pre-trained ImageNet weights. The bottom ~100 layers were frozen to preserve generalized edge and texture detection capabilities.
+* **Frozen Base:** The model was initialised with pre-trained ImageNet weights. The bottom ~100 layers were frozen to preserve generalised edge and texture detection capabilities.
 * **Fine-Tuning:** The top 50 layers were unfrozen, allowing the higher-level feature maps to adapt specifically to the unique horizontal and vertical frequency bands of respiratory spectrograms.
 * **Classification Head:** A custom dense classification head `(512 units -> Dropout 0.4 -> 256 units -> Dropout 0.3 -> 8-class Softmax)` was integrated to map the extracted features to specific pathologies.
 
@@ -96,7 +96,7 @@ Evaluation on an isolated, augmented test set confirmed the architecture's viabi
 | **Sensitivity (Recall)** | 96.91% |
 | **F1-Score** | 97.01% |
 
-*Note: The model weights yielding the absolute minimum Validation Loss were preserved via an Early Stopping temporal checkpoint prior to final evaluation.*
+*Note: The model weights yielding the absolute minimum Validation Loss were preserved via an Early Stopping temporal checkpoint before final evaluation.*
 
 ## 7. Android Application Engineering
 
@@ -181,18 +181,15 @@ The current architecture provides a robust foundation for active clinical screen
 
 * **Decentralised Telehealth Routing:** Automated generation of encrypted PDF diagnostic reports containing the raw spectrograms and AI confidence scores. These payloads will be engineered to transmit via asynchronous Bluetooth mesh networks or offline UPI rails to connect rural patients with remote pulmonologists.
 
-* **Federated Learning:** Investigating on-device training protocols to allow the model to adapt to localized acoustic environments and noise profiles without centralizing sensitive patient data.
+* **Federated Learning:** Investigating on-device training protocols to allow the model to adapt to localised acoustic environments and noise profiles without centralising sensitive patient data.
 
 ## 11. Author and Academic Context
 Priyanshu Pratik
 
 * Bachelor of Technology in Artificial Intelligence and Data Science
-
 * Gati Shakti Vishwavidyalaya, Vadodara, Gujarat, India
-
-* Specialisation: Transportation, Logistics, and Edge AI Deployment
-
-This software is developed as part of advanced research into offline medical diagnostics and resource-constrained artificial intelligence deployment.
+* 
+This software is developed as part of advanced research into offline medical diagnostics and the deployment of resource-constrained artificial intelligence.
 
 ## 12. License and Citation
 This project is licensed under the MIT License. You are free to use, modify, and distribute this software, provided that the original copyright notice and this permission notice are included in all copies or substantial portions of the software.
@@ -204,5 +201,3 @@ Priyanshu Pratik. (2026). PulmoSense: Edge-Optimised Deep Learning for Real-Time
 Respiratory Disease Screening. Gati Shakti Vishwavidyalaya.
 For technical inquiries or pull request submissions, please refer to the issues tab or submit a standardised pull request detailing the proposed architectural changes.
 ```
-   
- 
