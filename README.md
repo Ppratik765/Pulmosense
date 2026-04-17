@@ -122,16 +122,18 @@ PulmoSense/
 │   │   │   │   │   ├── components/         # Reusable Compose widgets
 │   │   │   │   │   ├── navigation/         # NavHost and Route definitions
 │   │   │   │   │   ├── screens/            # Main UI implementations (Dashboard, Recording, etc.)
-│   │   │   │   │   └── theme/              # Typography, Colors, and Compose Theme
+│   │   │   │   │   └── theme/              # Typography, Colours, and Compose Theme
 │   │   │   ├── res/                        # Drawables, XML layouts, and mipmap assets
 │   │   │   └── AndroidManifest.xml         # Required permissions (RECORD_AUDIO) and app config
 │   │   └── assets/
-│   │       └── pulmosense.tflite           # The compiled and quantized Edge ML model
+│   │       └── pulmosense.tflite           # The compiled and quantised Edge ML model
 │   ├── build.gradle.kts                    # App-level Gradle configuration (TFLite, JTransforms)
 │   └── proguard-rules.pro
 ├── gradle/                                 # Gradle wrapper configurations
 ├── build.gradle.kts                        # Project-level Gradle configuration
 ├── settings.gradle.kts                     # Project module inclusion
+├── 1_preprocess.py
+├── 2_train.py
 └── README.md                               # Project documentation
 ```
 Note: The Python training pipeline (1_preprocess.py, 2_train.py) and .npy data artefacts are maintained in a separate analytical directory and are not bundled into the Android APK.
