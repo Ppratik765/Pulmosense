@@ -58,21 +58,37 @@ fun PulmoSenseNavGraph(
             )
         }
         composable(Routes.Recording.route) {
+// 1. Where you define the RecordingScreen:
             RecordingScreen(
-                onRecordingComplete = {
-                    navController.navigate(Routes.Results.route) {
-                        popUpTo(Routes.Recording.route) { inclusive = true }
+                onRecordingComplete = { finalOutput ->
+                    // Convert the FloatArray [0.1, 0.2, 0.7...] into a String "0.1,0.2,0.7..."
+                    val arrayString = finalOutput?.joinToString(",") ?: ""
+                    navController.navigate(Routes.Results.createRoute(arrayString))
+                }
+            )
+        }
+
+            // 2. Where you define the ResultsScreen:
+            composable(route = Routes.Results.route) { backStackEntry ->
+                // Extract the string from the route
+                val arrayString = backStackEntry.arguments?.getString("arrayString") ?: ""
+
+                // Convert it back into a FloatArray for the UI!
+                val modelOutput = if (arrayString.isNotEmpty()) {
+                    arrayString.split(",").map { it.toFloat() }.toFloatArray()
+                } else {
+                    null
+                }
+
+                ResultsScreen(
+                    modelOutput = modelOutput,
+                    onFinish = {
+                        // Your brilliant, clean fix!
+                        // Pops everything off the stack until it lands safely back on the Main screen.
+                        navController.popBackStack(Routes.Main.route, false)
                     }
-                }
-            )
-        }
-        composable(Routes.Results.route) {
-            ResultsScreen(
-                onFinish = {
-                    navController.popBackStack(Routes.Main.route, false)
-                }
-            )
-        }
+                )
+            }
         composable(Routes.Account.route) {
             AccountScreen(
                 onBack = { navController.popBackStack() },
